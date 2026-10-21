@@ -1,0 +1,17 @@
+{
+  "lastUpdated": "2026-10-21",
+  "currentFocus": "Prototyping an offline-first SQLite sync engine for browser client apps using web workers and OPFS (Origin Private File System).",
+  "readingList": "Designing Data-Intensive Applications (2nd reading) by Martin Kleppmann, plus various papers on Raft consensus protocols.",
+  "listeningTo": "Tycho, Jon Hopkins, and long ambient synth sessions when writing systems code.",
+  "experiments": "Benchmarking WASM-compiled SQLite vs IndexedDB for 500k row local queries.",
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "This page is inspired by Derek Sivers' /now page movement. It acts as a public snapshot of what I am actively doing right now—work, hobbies, and ideas—rather than a static resume."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "title": "why-we-killed-our-redis-cluster",
+  "publishedAt": "2026-09-14",
+  "readingTime": "5 min read",
+  "summary": "How we replaced an over-engineered $900/month managed cluster with local SQLite read replicas, simpler code, and zero 2 AM pager alerts.",
+  "tags": [
+    "Architecture",
+    "Databases",
+    "Performance"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "For two years, our engineering team treated Redis like magical pixie dust. Whenever an endpoint was sluggish, someone would say: 'Just stick it in Redis.' Before long, we had 42 distinct cache keys, five background eviction cron jobs, and an architecture nobody fully understood."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "The Breaking Point"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Cache invalidation isn't just hard—it is a relentless source of subtle, user-facing bugs. When our inventory counts went out of sync during a flash sale, we realized our caching layer was hiding poor database indexing instead of actually solving performance."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "What We Did Instead"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "We deleted 80% of the cache keys. We properly indexed our PostgreSQL tables, added partial indexes for active tenants, and used local in-memory LRU caches with strict 10-second TTLs for hot reads. Total latency dropped, and our infrastructure cost plummeted."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "title": "distributed-sqlite-cache",
+  "tagline": "An embedded edge cache running SQLite in memory with peer-to-peer replication over QUIC.",
+  "role": "Solo Architect & Developer",
+  "timeframe": "6 weeks (Winter 2024)",
+  "featured": true,
+  "liveUrl": "https://example.com/demo",
+  "repoUrl": "https://github.com/example/distributed-sqlite-cache",
+  "technologies": [
+    "Go",
+    "SQLite",
+    "QUIC",
+    "TypeScript",
+    "React",
+    "Docker"
+  ],
+  "whatWentWrong": "We initially used Raft for consensus across 15 edge nodes, but network jitter on mobile edge points caused leader election flapping every 3 minutes. We had to scrap our Raft implementation entirely in week 3 and switch to an eventual consistency CRDT model with vector clocks. It delayed the prototype by 10 days, but dropped CPU overhead by 70%.",
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Most modern SaaS backends pay an outrageous monthly fee for multi-region Redis clusters simply to cache small read-heavy user sessions and authorization tokens."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "The Real Problem"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "When users in Singapore hit a US-East server for session tokens, they incur an unavoidable 210ms roundtrip delay. Sticking Redis at the edge solved latency, but the replication costs were painful for a team of 4 engineers."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Architecture & Decisions"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Instead of running a separate memory daemon, we embedded in-memory SQLite directly into each edge worker process. Each node maintains its own local b-tree cache and synchronizes mutation deltas over QUIC streams."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The result: p99 read latencies dropped from 145ms to 2.4ms, and our infrastructure bill went from $850/month to $34/month."
+        }
+      ]
+    }
+  ]
+}
