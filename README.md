@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Human-Centric CMS Portfolio
 
-## Getting Started
+An authentic, human-first developer & designer portfolio built with **Next.js 15 (App Router)**, **Keystatic CMS**, and **Tailwind CSS**, designed for zero-config deployment to **Vercel**.
 
-First, run the development server:
+---
+
+## Features
+
+- **Embedded Keystatic CMS (`/keystatic`)**: Full visual dashboard to add and edit projects, blog posts, and your `/now` page. No database needed—everything is committed to Git!
+- **Strict Anti-AI Rules**: Completely free of LLM buzzwords (*"delve"*, *"tapestry"*, *"beacon"*, *"seamless"*), fake corporate speak, and neon gradient clichés.
+- **The "Messy Middle"**: Built-in post-mortem callouts on case studies highlighting what broke, architecture tradeoffs, and lessons learned.
+- **The `/now` Page**: Dedicated live status inspired by Derek Sivers.
+- **Site Colophon**: Transparently documents fonts, tools, and the anti-AI manifesto.
+- **Lighthouse 100 & CLS 0**: Pre-rendered static pages with Server Components.
+
+---
+
+## Quick Start
+
+### 1. Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Public website: [http://localhost:3000](http://localhost:3000)
+- Visual CMS Admin: [http://localhost:3000/keystatic](http://localhost:3000/keystatic)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Manage Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit [http://localhost:3000/keystatic](http://localhost:3000/keystatic) to:
+- Edit your **Bio, Name, and Status** in the *Profile* singleton.
+- Update your **Current Focus & Reading List** in the *Now Page* singleton.
+- Create or modify **Projects** with case study narratives and obstacles.
+- Write new **Field Notes & Articles**.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Deploying to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Option 1: Vercel Dashboard (Recommended)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a repository on GitHub:
+   ```bash
+   git remote add origin https://github.com/<your-username>/<your-repo-name>.git
+   git branch -M main
+   git push -u origin main
+   ```
+2. Open [vercel.com/new](https://vercel.com/new) and import the repository.
+3. Framework preset will automatically detect **Next.js**. Click **Deploy**!
 
-## Deploy on Vercel
+### Option 2: Live Editing in Production (Keystatic Cloud)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To edit content directly on your live Vercel URL from any phone, tablet, or browser:
+1. Register your repository for free at [keystatic.cloud](https://keystatic.cloud).
+2. In your Vercel project settings, set:
+   - `KEYSTATIC_SECRET` (generate a random 32-character string)
+   - `NEXT_PUBLIC_KEYSTATIC_PROJECT_NAME` (your Keystatic Cloud team/project name)
+3. In `keystatic.config.ts`, change `storage.kind` to `'github'` or `'cloud'` when in production.
