@@ -1,59 +1,54 @@
 import Link from 'next/link';
-import { reader } from '@/lib/keystatic';
-import { BookOpen } from 'lucide-react';
+import { getArticles } from '@/lib/db';
+import { ArrowRight } from 'lucide-react';
 
-export default async function WritingIndexPage() {
-  const allWriting = await reader.collections.writing.all();
+export default function WritingPage() {
+  const articles = getArticles();
 
   return (
-    <div className="space-y-10 max-w-3xl">
-      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-6">
-        <div className="flex items-center gap-2 text-xs font-mono text-[var(--accent)] uppercase tracking-wider">
-          <BookOpen className="w-4 h-4" />
-          <span>Field Notes & Essays</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-          Writing & Architecture Notes
+    <div className="space-y-12 max-w-3xl">
+      <div className="space-y-3 border-b border-zinc-200 dark:border-zinc-800 pb-8">
+        <span className="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold uppercase tracking-wider">
+          Articles & Field Notes
+        </span>
+        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Writing
         </h1>
-        <p className="text-base text-[var(--text-secondary)] leading-relaxed">
-          Unfiltered notes on software systems, web development, trade-offs, and why simpler solutions almost always beat complex abstractions.
+        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          Essays and practical notes on software architecture, interface design, performance, and engineering leadership.
         </p>
       </div>
 
       <div className="space-y-6">
-        {allWriting.map(post => (
+        {articles.map(article => (
           <article
-            key={post.slug}
-            className="group p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:border-[var(--border-strong)] transition-all"
+            key={article.slug}
+            className="group p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all shadow-sm"
           >
-            <div className="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] mb-2">
-              <span>{post.entry.publishedAt}</span>
-              <span>{post.entry.readingTime}</span>
+            <div className="flex items-center justify-between text-xs font-mono text-zinc-400 mb-3">
+              <span>{article.publishedAt}</span>
+              <span>{article.readingTime}</span>
             </div>
 
-            <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-3 leading-snug">
               <Link
-                href={`/writing/${post.slug}`}
-                className="group-hover:text-[var(--accent)] transition-colors group-hover:underline underline-offset-4"
+                href={`/writing/${article.slug}`}
+                className="group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors"
               >
-                {post.entry.title.replace(/-/g, ' ')}
+                {article.title}
               </Link>
             </h2>
 
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
-              {post.entry.summary}
+            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+              {article.summary}
             </p>
 
-            <div className="flex flex-wrap gap-1.5">
-              {post.entry.tags.map(tag => (
-                <span
-                  key={tag}
-                  className="text-xs font-mono px-2 py-0.5 rounded bg-[var(--border-subtle)] text-[var(--text-secondary)]"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
+            <Link
+              href={`/writing/${article.slug}`}
+              className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 inline-flex items-center gap-1 transition-colors"
+            >
+              Read Article <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </article>
         ))}
       </div>

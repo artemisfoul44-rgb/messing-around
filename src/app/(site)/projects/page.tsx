@@ -1,42 +1,26 @@
-import { reader } from '@/lib/keystatic';
+import { getProjects } from '@/lib/db';
 import ProjectCard from '@/components/ProjectCard';
-import { Layers } from 'lucide-react';
 
-export default async function ProjectsIndexPage() {
-  const allProjects = await reader.collections.projects.all();
+export default function ProjectsPage() {
+  const allProjects = getProjects();
 
   return (
-    <div className="space-y-10">
-      <div className="space-y-3 border-b border-[var(--border-subtle)] pb-6">
-        <div className="flex items-center gap-2 text-xs font-mono text-[var(--accent)] uppercase tracking-wider">
-          <Layers className="w-4 h-4" />
-          <span>Complete Archive</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-          Projects & Case Studies
+    <div className="space-y-12">
+      <div className="space-y-3 border-b border-zinc-200 dark:border-zinc-800 pb-8">
+        <span className="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold uppercase tracking-wider">
+          Portfolio Archive
+        </span>
+        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Selected Projects
         </h1>
-        <p className="text-base text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-          Detailed breakdowns of systems, developer tooling, and web applications I have designed and built. Each project outlines the problem, the solution, and the messy mistakes made along the way.
+        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
+          A showcase of web applications, commercial storefronts, and developer platforms I have engineered from concept to production.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {allProjects.map(project => (
-          <ProjectCard
-            key={project.slug}
-            project={{
-              slug: project.slug,
-              title: project.entry.title,
-              tagline: project.entry.tagline,
-              role: project.entry.role,
-              timeframe: project.entry.timeframe,
-              technologies: project.entry.technologies,
-              liveUrl: project.entry.liveUrl,
-              repoUrl: project.entry.repoUrl,
-              whatWentWrong: project.entry.whatWentWrong,
-              featured: project.entry.featured,
-            }}
-          />
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
     </div>

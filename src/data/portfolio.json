@@ -1,0 +1,121 @@
+{
+  "profile": {
+    "name": "Alex Morales",
+    "role": "Product Engineer & Full-Stack Developer",
+    "location": "San Francisco, CA / Remote",
+    "availability": "Available for new projects",
+    "bio": "I design and build web applications with an obsession for speed, clean typography, and thoughtful interfaces. Over the last 6 years, I've helped early-stage startups and established teams ship products used by hundreds of thousands of people.",
+    "email": "alex@morales.dev",
+    "github": "https://github.com",
+    "twitter": "https://twitter.com",
+    "linkedin": "https://linkedin.com"
+  },
+  "projects": [
+    {
+      "id": "pulse-workspace",
+      "slug": "pulse-workspace",
+      "title": "Pulse — Collaborative Workspace",
+      "category": "Web Application",
+      "client": "Pulse Technologies",
+      "year": "2025",
+      "tagline": "Real-time team workspace with live document editing, keyboard-first navigation, and kanban boards.",
+      "description": "Pulse was built to replace slow, bloated project management tools with a lightweight, lightning-fast workspace. Features include operational transformation for multiplayer document editing, offline persistence, and seamless drag-and-drop workflows.",
+      "coverImage": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "WebSockets", "PostgreSQL", "Redis"],
+      "liveUrl": "https://pulse.example.dev",
+      "repoUrl": "https://github.com/example/pulse-workspace",
+      "featured": true,
+      "metrics": "18,000 active users, <60ms p99 interaction latency",
+      "details": {
+        "challenge": "Legacy project management software felt sluggish, taking 2-3 seconds per page transition. The team needed sub-100ms UI responsiveness and multiplayer document collaboration without losing changes during intermittent network drops.",
+        "solution": "We re-architected the client around local-first optimistic updates using IndexedDB and WebSocket delta syncing. When connectivity drops, changes queue locally and rebase cleanly upon reconnection.",
+        "outcome": "User daily engagement increased by 38%, and client-reported latency dropped from 1.8s to under 45ms across all major interactions."
+      }
+    },
+    {
+      "id": "aura-commerce",
+      "slug": "aura-commerce",
+      "title": "Aura — Headless Commerce Platform",
+      "category": "E-Commerce & Design",
+      "client": "Aura Studio",
+      "year": "2024",
+      "tagline": "Sub-second headless storefront with localized currencies, real-time inventory, and 1-click checkout.",
+      "description": "A bespoke digital shopping experience built for a luxury home-goods brand. Replaced an existing Shopify liquid theme with an edge-rendered Next.js storefront integrated with Stripe and warehouse management APIs.",
+      "coverImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+      "technologies": ["Next.js", "React", "Shopify Storefront API", "Tailwind CSS", "Stripe", "Framer Motion"],
+      "liveUrl": "https://aura.example.dev",
+      "repoUrl": "https://github.com/example/aura-commerce",
+      "featured": true,
+      "metrics": "+42% mobile conversion rate, 99 Lighthouse performance score",
+      "details": {
+        "challenge": "The previous monolith store suffered from severe layout shifts, third-party script bloat, and an 8-second Time to Interactive on mobile devices, causing high cart abandonment rates.",
+        "solution": "Built a static-first headless storefront on Vercel with edge-cached product catalogs, an instant slide-over cart drawer, and localized Stripe payment flows.",
+        "outcome": "Mobile checkout conversion jumped by 42% in the first quarter post-launch, while average bounce rate plummeted from 54% to 21%."
+      }
+    },
+    {
+      "id": "kite-financial",
+      "slug": "kite-financial",
+      "title": "Kite — Treasury & Reconciliation Dashboard",
+      "category": "Fintech Dashboard",
+      "client": "Kite Capital",
+      "year": "2024",
+      "tagline": "Real-time cash flow visualization, automated transaction reconciliation, and audit reporting.",
+      "description": "An enterprise treasury portal designed for finance teams managing accounts across 12 countries. Processes multi-currency feeds and highlights reconciliation discrepancies automatically.",
+      "coverImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "technologies": ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL", "Docker"],
+      "liveUrl": "https://kite.example.dev",
+      "repoUrl": "https://github.com/example/kite-financial",
+      "featured": true,
+      "metrics": "$140M+ reconciled monthly across 40+ corporate entities",
+      "details": {
+        "challenge": "Finance analysts spent 14 hours every Friday manually matching CSV statements against bank API records, frequently missing duplicate wire fees.",
+        "solution": "Developed an automated matching engine with fuzzy hash heuristics and a high-density interactive grid powered by virtualized tables and D3 trend charts.",
+        "outcome": "Reduced manual reconciliation time from 14 hours to 18 minutes per week with 99.98% automated reconciliation accuracy."
+      }
+    },
+    {
+      "id": "atlas-docs",
+      "slug": "atlas-docs",
+      "title": "Atlas — Interactive Developer Documentation",
+      "category": "Developer Tooling",
+      "client": "Atlas Cloud",
+      "year": "2023",
+      "tagline": "Documentation engine with live API testing playgrounds, auto-generated SDK snippets, and instant search.",
+      "description": "Modern technical documentation platform with embedded sandbox environments, multi-language code snippets, and automated OpenAPI spec synchronization.",
+      "coverImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+      "technologies": ["Next.js", "MDX", "TypeScript", "Tailwind CSS", "Algolia"],
+      "liveUrl": "https://atlas.example.dev",
+      "repoUrl": "https://github.com/example/atlas-docs",
+      "featured": false,
+      "metrics": "Used by 45,000+ developers, <15ms search response time",
+      "details": {
+        "challenge": "Developers struggled with outdated documentation, manual curl copying, and fragmented API references across different language SDKs.",
+        "solution": "Built a unified documentation hub with executable API request builders right in the browser, powered by automated CI sync with backend OpenAPI definitions.",
+        "outcome": "Developer onboarding support tickets decreased by 60% within 60 days of deployment."
+      }
+    }
+  ],
+  "articles": [
+    {
+      "id": "optimistic-ui-patterns",
+      "slug": "optimistic-ui-patterns",
+      "title": "Designing for Perceived Speed: Optimistic UI in Practice",
+      "category": "Frontend Architecture",
+      "publishedAt": "2025-08-12",
+      "readingTime": "5 min read",
+      "summary": "Why the best interfaces feel instantaneous by assuming success first and reconciling errors quietly in the background.",
+      "content": "When users tap a like button, archive an email, or toggle a task status, they shouldn't stare at a loading spinner. The interface should update immediately.\n\nOptimistic UI isn't just a visual trick; it's a fundamental architectural shift. Instead of waiting for the roundtrip HTTP response before reflecting state changes, the client updates the UI locally, rolls the state into an undoable history stack, and dispatches the network request in parallel.\n\n### Handling The Failure Case\nThe real challenge isn't optimistic rendering—it's failure management. What happens when the network drops, or the server rejects the mutation due to permission rules?\n\n1. **Silent Rollback with Toast Notice:** Revert the local state and display a non-blocking notification with a clear 'Retry' button.\n2. **Queued Syncing:** In offline-first apps, append failed mutations to an IndexedDB queue and re-attempt when back online.\n\nBy treating the network as an asynchronous synchronization channel rather than a blocking prerequisite for visual feedback, applications feel dramatically faster."
+    },
+    {
+      "id": "simple-software-over-complexity",
+      "slug": "simple-software-over-complexity",
+      "title": "The Case for Fewer Moving Parts",
+      "category": "Engineering",
+      "publishedAt": "2025-05-20",
+      "readingTime": "4 min read",
+      "summary": "How stripping out unnecessary microservices, message queues, and caching layers often makes systems faster, cheaper, and more reliable.",
+      "content": "Early in my career, I thought good engineering was about showing how many technologies I could stitch together: Kubernetes clusters, Kafka topics, Redis caches, GraphQL gateways.\n\nOver time, I learned that every moving part is a liability. Every network hop between services is a potential timeout. Every cache is an invalidation bug waiting to happen. Every distributed database introduces consistency trade-offs.\n\nBefore reaching for distributed systems, ask yourself:\n- Can a properly indexed single PostgreSQL instance handle this workload? (In 95% of cases, yes).\n- Can server-rendered HTML or edge caching eliminate the need for heavy client-side state managers?\n- Does your team have the bandwidth to monitor and maintain five distinct services when one cohesive application would do the job?\n\nGreat engineering isn't about complexity; it's about making hard problems simple."
+    }
+  ]
+}

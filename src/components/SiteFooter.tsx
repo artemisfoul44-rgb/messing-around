@@ -1,63 +1,66 @@
 import Link from 'next/link';
-import { ArrowUpRight, Heart } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { Profile } from '@/lib/db';
 
-export default function SiteFooter({
-  email = 'alex@morales.dev',
-  githubUrl = 'https://github.com',
-  linkedinUrl = 'https://linkedin.com',
-  twitterUrl = 'https://twitter.com',
-}: {
-  email?: string;
-  githubUrl?: string;
-  linkedinUrl?: string;
-  twitterUrl?: string;
-}) {
+export default function SiteFooter({ profile }: { profile?: Profile }) {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-[var(--border-subtle)] mt-24 py-12 text-sm text-[var(--text-secondary)]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+    <footer className="border-t border-zinc-200 dark:border-zinc-800/80 mt-28 py-14 text-sm text-zinc-500 dark:text-zinc-400">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
-          <p className="font-medium text-[var(--text-primary)]">
-            Built with human taste & zero corporate boilerplate.
+          <p className="font-semibold text-zinc-900 dark:text-zinc-100">
+            {profile?.name || 'Alex Morales'}
           </p>
-          <p className="text-xs text-[var(--text-muted)] mt-1">
-            Next.js 15, Keystatic CMS, Tailwind CSS. Hosted on Vercel Edge.
+          <p className="text-xs text-zinc-500 mt-1">
+            Product Engineer & Designer. Built with Next.js, Tailwind, and integrated CMS.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 text-xs font-mono">
-          {email && (
+        <div className="flex flex-wrap items-center gap-5 text-xs font-mono">
+          {profile?.email && (
             <a
-              href={`mailto:${email}`}
-              className="hover:text-[var(--text-primary)] hover:underline underline-offset-4 flex items-center gap-0.5"
+              href={`mailto:${profile.email}`}
+              className="hover:text-zinc-900 dark:hover:text-white transition-colors flex items-center gap-0.5"
             >
               Email <ArrowUpRight className="w-3 h-3" />
             </a>
           )}
-          {githubUrl && (
+          {profile?.github && (
             <a
-              href={githubUrl}
+              href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[var(--text-primary)] hover:underline underline-offset-4 flex items-center gap-0.5"
+              className="hover:text-zinc-900 dark:hover:text-white transition-colors flex items-center gap-0.5"
             >
               GitHub <ArrowUpRight className="w-3 h-3" />
             </a>
           )}
-          {linkedinUrl && (
+          {profile?.twitter && (
             <a
-              href={linkedinUrl}
+              href={profile.twitter}
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[var(--text-primary)] hover:underline underline-offset-4 flex items-center gap-0.5"
+              className="hover:text-zinc-900 dark:hover:text-white transition-colors flex items-center gap-0.5"
+            >
+              Twitter <ArrowUpRight className="w-3 h-3" />
+            </a>
+          )}
+          {profile?.linkedin && (
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-zinc-900 dark:hover:text-white transition-colors flex items-center gap-0.5"
             >
               LinkedIn <ArrowUpRight className="w-3 h-3" />
             </a>
           )}
           <Link
-            href="/colophon"
-            className="hover:text-[var(--text-primary)] hover:underline underline-offset-4"
+            href="/admin"
+            className="hover:text-amber-500 transition-colors"
           >
-            Colophon & Anti-AI
+            Admin
           </Link>
         </div>
       </div>
